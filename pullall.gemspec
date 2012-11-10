@@ -6,8 +6,10 @@ Gem::Specification.new do |s|
   s.authors     = ["João Magalhães"]
   s.email       = ['joao@iterar.co', 'joao@savantstudio.co.uk']
   s.files       = %w[
-    lib/pullall.rb
     bin/pullall
+    lib/pullall.rb
+    lib/pullall/actions.rb
+    lib/pullall/lib_trollop.rb
   ]
   s.executables = ["pullall"]
   s.homepage    = 'http://github.com/jcmagalhaes/pullall'
