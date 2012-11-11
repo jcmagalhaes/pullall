@@ -4,7 +4,7 @@ require 'pullall/actions'
 class Pullall
   extend Actions
   
-  SUB_COMMANDS = %w(add rm)
+  SUB_COMMANDS = %w(add rm ls)
   help = <<HELP
 
   Pull all the repositories that belong to a group you created.

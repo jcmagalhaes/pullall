@@ -4,6 +4,12 @@ module Actions
 
   STORAGE = "#{ENV['HOME']}/.pullall"
 
+  # Output in red
+  def colorize(text)
+    "\e[#{31}m#{text}\e[0m"
+  end
+
+  # Use real path to allow the use of .(current directory) as an argument
   def get_real_paths(paths)
     paths.collect! do |path|
       if File.exists?(path)
@@ -19,7 +25,7 @@ module Actions
     groups = load_all
     puts "\n"
     groups.each do |group, paths|
-      puts "#{group} - #{paths}"
+      puts "#{colorize(group)}: #{paths.join(', ')}"
       puts "\n"
     end
   end
@@ -32,7 +38,6 @@ module Actions
   def save_paths(*paths, group)
     groups = load_all
     
-    # Use real path to allow the use of .(current directory) as an argument
     if groups.has_key?(group)
       paths.each do |path|
         if groups[group].include?(path)
@@ -105,7 +110,7 @@ module Actions
   def pull(group)
     paths = load_paths(group)
     paths.each do |path|
-      puts "Pulling from #{path}:"
+      puts "Pulling from #{colorize(path)}:"
       %x(git --git-dir #{path}/.git pull origin master)
       puts "\n"
     end
