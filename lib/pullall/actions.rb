@@ -118,7 +118,7 @@ module Actions
     paths = load_paths(group)
     paths.each do |path|
       puts "Pulling from #{colorize(path)}:"
-      %x(git --git-dir #{path}/.git --work-tree #{path} pull origin master)
+      %x((cd #{path} && git pull origin master))
       puts "\n"
     end
   end
