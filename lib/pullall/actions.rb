@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'oj'
 
-module Action
+module Actions
 
   STORAGE = "#{ENV['HOME']}/.pullall"
 
@@ -18,8 +18,10 @@ module Action
 
   def list_groups
     groups = load_all
+    puts "\n"
     groups.each do |group, paths|
       puts "#{group} - #{paths}"
+      puts "\n"
     end
   end
 
@@ -43,7 +45,8 @@ module Action
       groups[group] = [*paths]
     end
     save_all(groups)
-    puts "Path successfully saved"
+    msg = paths.empty? ? "Group successfully created" : "Path successfully saved"
+    puts msg
   end
 
   def load_paths(group)
@@ -83,12 +86,18 @@ module Action
     groups = load_all
 
     if groups.has_key?(group)
-      paths = groups[group]
-      if not paths.delete(path)
-        Trollop::die "Given path doesn't belong to group #{group}" 
+      existent_paths = groups[group]
+
+      # First check if all the paths belong to the given group
+      paths.each do |path|
+        if existent_paths.include?(path)
+          existent_paths.delete(path)  
+        else
+          Trollop::die "Given path #{path} doesn't belong to group #{group}. Changes not saved."
+        end
       end
       save_all(groups)
-      puts "Path successfully removed from group #{group}"
+      puts "Paths successfully removed from group #{group}"
     else
       Trollop::die "Group #{group} doesn't exist"
     end
@@ -98,7 +107,7 @@ module Action
     paths = load_paths(group)
     paths.each do |path|
       puts "Pulling from #{path}:"
-      %x(git --git-dir #{path}/.git pull origin master)  
+      %x(git --git-dir #{path}/.git pull origin master)
       puts "\n"
     end
   end
