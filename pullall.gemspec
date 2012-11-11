@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'pullall'
-  s.version     = '0.1'
+  s.version     = '0.1.1'
   s.summary     = "Pullall"
   s.description = "Pull all the repositories that belong to a group you defined"
   s.authors     = ["João Magalhães"]
