@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'pullall'
-  s.version     = '0.1.2'
+  s.version     = '0.1.3'
   s.summary     = "Pullall"
   s.description = "Pull from all the repositories that belong to a group you created"
   s.authors     = ["João Magalhães"]
@@ -13,5 +13,5 @@ Gem::Specification.new do |s|
   ]
   s.add_dependency('oj', '~> 1.4.4')
   s.executables = ["pullall"]
-  s.homepage    = 'http://github.com/jcmagalhaes/pullall'
+  s.homepage    = 'https://github.com/Iterar/pullall'
 end
