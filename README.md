@@ -1,6 +1,6 @@
 # Pullall
 
-Pull all the repositories that belong to a group you created.
+This ruby gem allows you to get the most of Git by allowing you to pull all the repositories that belong to a group you created.
 
 ## Installation
 All you need to do is install the gem and then you're ready to pull a group of repositories at once using the command *pullall*.
