@@ -1,6 +1,8 @@
+# Pullall
+
 Pull all the repositories that belong to a group you created.
 
-  Usage:
+## How to use it
 
     pullall <group>                         # pull all the repos from <group>
     pullall ls                              # list all the groups
@@ -23,3 +25,10 @@ Pull all the repositories that belong to a group you created.
 
     # Remove all the repositories included in group savant
     pullall rm * -g savant
+
+## Next steps
+
+* Specify branch from which to pull
+* Format output messages
+* Add tests
+* Code refactoring
