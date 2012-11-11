@@ -4,9 +4,10 @@ module Actions
 
   STORAGE = "#{ENV['HOME']}/.pullall"
 
-  # Output in red
+  # Output in bold red
   def colorize(text)
-    "\e[#{31}m#{text}\e[0m"
+    red_text = "\e[#{31}m#{text}\e[0m"
+    "\e[#{1}m#{red_text}\e[0m"
   end
 
   def pluralize(n, text)
@@ -30,7 +31,8 @@ module Actions
     groups = load_all
     puts "\n"
     groups.each do |group, paths|
-      puts "#{colorize(group)}: #{paths.join(', ')}"
+      puts "#{colorize(group)}:"
+      puts "  #{paths.join("\n  ")}"
       puts "\n"
     end
   end
