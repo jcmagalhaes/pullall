@@ -2,6 +2,11 @@
 
 Pull all the repositories that belong to a group you created.
 
+## Installation
+All you need to do is install the gem and then you're ready to pull a group of repositories at once using the command *pullall*.
+    
+    gem install pullall
+
 ## How to use it
 
     pullall <group>                         # pull all the repos from <group>
