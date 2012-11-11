@@ -9,6 +9,10 @@ module Actions
     "\e[#{31}m#{text}\e[0m"
   end
 
+  def pluralize(n, text)
+    (n == 1) ? text : "#{text}s"
+  end
+
   # Use real path to allow the use of .(current directory) as an argument
   def get_real_paths(paths)
     paths.collect! do |path|
@@ -21,6 +25,7 @@ module Actions
     paths
   end
 
+  # Output all the groups and associated paths
   def list_groups
     groups = load_all
     puts "\n"
@@ -35,6 +40,7 @@ module Actions
     Oj.to_file(STORAGE, json)
   end
 
+  # Only allow saving a path or a group of paths if all of them don't belong to the group
   def save_paths(*paths, group)
     groups = load_all
     
@@ -49,10 +55,11 @@ module Actions
       groups[group] = [*paths]
     end
     save_all(groups)
-    msg = paths.empty? ? "Group successfully created" : "Paths successfully saved"
+    msg = paths.empty? ? "Group successfully created" : "#{pluralize(paths.size, "Path")} successfully saved"
     puts msg
   end
 
+  # Get the paths that belong to a given group
   def load_paths(group)
     groups = load_all
     if groups.has_key?(group)
@@ -101,7 +108,7 @@ module Actions
         end
       end
       save_all(groups)
-      puts "Paths successfully removed from group #{group}"
+      puts "Paths successfully removed from group #{colorize(group)}"
     else
       Trollop::die "Group #{group} doesn't exist"
     end
