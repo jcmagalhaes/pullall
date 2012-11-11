@@ -12,7 +12,7 @@ class Pullall
   Usage:
 
     pullall <group>                         # pull all the repos from <group>
-    pullall ls                            # list all the groups
+    pullall ls                              # list all the groups
     pullall add <path> -g <group>           # add <path> to <group>. If <group> doesn't exist create it
     pullall add <path1> <path2> -g <group>  # add multiple paths to <group>
     pullall rm <path> -g <group>            # remove <path> from <group>
