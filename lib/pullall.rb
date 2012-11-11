@@ -60,8 +60,7 @@ HELP
       group = cmd_opts[:group]
       if group
         group_opt_index = args.index('-g') || args.index('--group')
-        paths = args - args[group_opt_index..group_opt_index + 1]
-        paths = get_real_paths(paths)
+        paths = get_real_paths(args - args[group_opt_index..group_opt_index + 1])
         save_paths(*paths, cmd_opts[:group])
       else  
         Trollop::die "You must define a group name using -g option"
@@ -72,8 +71,7 @@ HELP
       group = cmd_opts[:group]
       if group 
         group_opt_index = args.index('-g') || args.index('--group')
-        paths = args - args[group_opt_index..group_opt_index + 1]
-        paths = get_real_paths(paths)
+        paths = get_real_paths(args - args[group_opt_index..group_opt_index + 1])
         if paths.empty?
           remove_group(group)
         else

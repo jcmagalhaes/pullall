@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name        = 'pullall'
-  s.version     = '0.1.1'
+  s.version     = '0.1.2'
   s.summary     = "Pullall"
-  s.description = "Pull all the repositories that belong to a group you defined"
+  s.description = "Pull from all the repositories that belong to a group you created"
   s.authors     = ["João Magalhães"]
   s.email       = ['joao@iterar.co', 'joao@savantstudio.co.uk']
   s.files       = %w[
