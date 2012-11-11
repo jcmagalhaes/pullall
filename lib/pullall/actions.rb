@@ -45,7 +45,7 @@ module Actions
       groups[group] = [*paths]
     end
     save_all(groups)
-    msg = paths.empty? ? "Group successfully created" : "Path successfully saved"
+    msg = paths.empty? ? "Group successfully created" : "Paths successfully saved"
     puts msg
   end
 
