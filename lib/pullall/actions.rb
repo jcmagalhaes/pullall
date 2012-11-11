@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'oj'
 
 module Actions
